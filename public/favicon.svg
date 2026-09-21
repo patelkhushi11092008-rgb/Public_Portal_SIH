@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Outer Shield / Pin Shape -->
+  <path d="M24 4C14.0589 4 6 12.0589 6 22C6 33.5 24 44 24 44C24 44 42 33.5 42 22C42 12.0589 33.9411 4 24 4Z" fill="#0B192C"/>
+  <path d="M24 4C14.0589 4 6 12.0589 6 22C6 33.5 24 44 24 44C24 44 42 33.5 42 22C42 12.0589 33.9411 4 24 4Z" stroke="#1D4ED8" stroke-width="2"/>
+  
+  <!-- Infrastructure Pillar & Bridge Beam -->
+  <rect x="15" y="20" width="4" height="12" rx="1" fill="#FFFFFF"/>
+  <rect x="29" y="20" width="4" height="12" rx="1" fill="#FFFFFF"/>
+  <path d="M12 18H36" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Citizen Observation Eye / Pin Center -->
+  <circle cx="24" cy="14" r="5" fill="#F59E0B"/>
+  <circle cx="24" cy="14" r="2.5" fill="#0B192C"/>
+  
+  <!-- Foundation Line -->
+  <path d="M14 32H34" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"/>
+</svg>

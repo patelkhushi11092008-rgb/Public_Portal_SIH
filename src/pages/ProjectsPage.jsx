@@ -4,10 +4,13 @@ import Button from '../components/common/Button';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../components/common/Card';
 import ProjectStatusBadge from '../components/status/ProjectStatusBadge';
 import { MOCK_PROJECTS } from '../constants/mockData';
-import { Search, Filter, ArrowRight } from 'lucide-react';
+import { Search, Filter, ArrowRight, Camera } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useObservations } from '../context/ObservationContext';
 
 export default function ProjectsPage() {
+  const { observations, getObservationsByProjectId } = useObservations();
+
   return (
     <div className="pb-16">
       <PageHeader
@@ -16,7 +19,7 @@ export default function ProjectsPage() {
         breadcrumbs={[{ label: 'Projects' }]}
         action={
           <Link to="/report">
-            <Button variant="accent" size="sm">
+            <Button variant="accent" size="sm" icon={Camera}>
               Submit Ground Report
             </Button>
           </Link>
@@ -27,45 +30,53 @@ export default function ProjectsPage() {
         <div className="p-4 bg-white border border-slate-200 rounded-lg shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-xs text-slate-500">
             <Filter className="w-4 h-4 text-blue-600" />
-            <span>Showing sample projects connected with the <strong>AAROHAN</strong> project registry.</span>
+            <span>Showing monitored projects connected with the <strong>AAROHAN</strong> project registry.</span>
           </div>
           <span className="text-xs font-semibold text-slate-700">
-            5 Projects Registered (Placeholder View)
+            {MOCK_PROJECTS.length} Projects Tracked • {observations.length} Citizen Observations Staged
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {MOCK_PROJECTS.map((project) => (
-            <Card key={project.id} variant="interactive" className="flex flex-col justify-between">
-              <div>
-                <CardHeader>
-                  <span className="font-mono text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
-                    {project.id}
+          {MOCK_PROJECTS.map((project) => {
+            const projectObs = getObservationsByProjectId(project.id);
+            const totalCount = project.observationsCount + projectObs.length;
+
+            return (
+              <Card key={project.id} variant="interactive" className="flex flex-col justify-between">
+                <div>
+                  <CardHeader>
+                    <span className="font-mono text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                      {project.id}
+                    </span>
+                    <ProjectStatusBadge status={project.status} size="sm" />
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <span className="text-xs font-medium text-blue-700 uppercase tracking-wide block">
+                      {project.category}
+                    </span>
+                    <CardTitle>{project.name}</CardTitle>
+                    <div className="text-xs text-slate-600 space-y-1">
+                      <div>Budget: <strong className="text-slate-800">{project.budget}</strong></div>
+                      <div>Target: <span className="font-medium text-slate-800">{project.targetDate}</span></div>
+                      <div>Authority: <span className="text-slate-700">{project.authority}</span></div>
+                      <div>Location: <span className="text-slate-700">{project.ward}</span></div>
+                    </div>
+                  </CardContent>
+                </div>
+                <CardFooter>
+                  <span className="text-xs text-slate-500 font-medium">
+                    {totalCount} Observations ({projectObs.length} live staged)
                   </span>
-                  <ProjectStatusBadge status={project.status} size="sm" />
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <span className="text-xs font-medium text-blue-700 uppercase tracking-wide block">
-                    {project.category}
-                  </span>
-                  <CardTitle>{project.name}</CardTitle>
-                  <div className="text-xs text-slate-600 space-y-1">
-                    <div>Budget: <strong className="text-slate-800">{project.budget}</strong></div>
-                    <div>Target: <span className="font-medium text-slate-800">{project.targetDate}</span></div>
-                    <div>Authority: <span className="text-slate-700">{project.authority}</span></div>
-                  </div>
-                </CardContent>
-              </div>
-              <CardFooter>
-                <span className="text-xs text-slate-500">{project.observationsCount} Observations</span>
-                <Link to={`/project/${project.id}`}>
-                  <Button variant="ghost" size="sm" icon={ArrowRight} iconPosition="right">
-                    View Project
-                  </Button>
-                </Link>
-              </CardFooter>
-            </Card>
-          ))}
+                  <Link to={`/project/${project.id}`}>
+                    <Button variant="ghost" size="sm" icon={ArrowRight} iconPosition="right">
+                      View Project
+                    </Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </div>

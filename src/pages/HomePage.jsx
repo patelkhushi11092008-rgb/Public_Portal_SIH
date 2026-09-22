@@ -35,13 +35,15 @@ import LoadingState, { LoadingCard } from '../components/common/LoadingState';
 import EmptyState from '../components/common/EmptyState';
 import ImageContainer from '../components/common/ImageContainer';
 
-// Status Components
 import ProjectStatusBadge from '../components/status/ProjectStatusBadge';
 import ObservationStatusBadge from '../components/status/ObservationStatusBadge';
 import DataTierCard from '../components/status/DataTierCard';
 import SectionHeader from '../components/layout/SectionHeader';
+import { useObservations } from '../context/ObservationContext';
 
 export default function HomePage() {
+  const { observations } = useObservations();
+
   // Modal demo state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -135,8 +137,12 @@ export default function HomePage() {
               <span className="text-xs text-slate-400 uppercase tracking-wider font-semibold block">
                 Citizen Observations
               </span>
-              <span className="text-2xl font-bold text-amber-400 mt-1 block">9,420</span>
-              <span className="text-[11px] text-slate-400 mt-0.5 block">Geotagged & verified</span>
+              <span className="text-2xl font-bold text-amber-400 mt-1 block">
+                {(9420 + observations.length).toLocaleString()}
+              </span>
+              <span className="text-[11px] text-slate-400 mt-0.5 block">
+                {observations.length} active in staging
+              </span>
             </div>
             <div className="bg-slate-800/60 border border-slate-700/60 rounded-lg p-4">
               <span className="text-xs text-slate-400 uppercase tracking-wider font-semibold block">

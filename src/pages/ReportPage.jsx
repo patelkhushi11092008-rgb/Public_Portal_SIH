@@ -464,7 +464,7 @@ export default function ReportPage() {
                     <div className="space-y-0.5">
                       <span className="font-bold text-slate-900">{currentProject.name}</span>
                       <p className="text-slate-500">
-                        {currentProject.authority} • Sanctioned Cost: {currentProject.budget}
+                        {currentProject.authority} • {currentProject.ward || currentProject.location || "Civic Infrastructure"}
                       </p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">

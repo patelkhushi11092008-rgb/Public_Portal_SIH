@@ -1,17 +1,12 @@
-import React from 'react';
+﻿import React from 'react';
 import Modal from '../common/Modal';
 import Button from '../common/Button';
-import Badge from '../common/Badge';
 import {
   Building2,
   Calendar,
-  IndianRupee,
   MapPin,
-  TrendingUp,
   MessageSquare,
   AlertTriangle,
-  CheckCircle2,
-  ExternalLink,
 } from 'lucide-react';
 
 export default function ProjectDetailModal({
@@ -26,8 +21,7 @@ export default function ProjectDetailModal({
   const isCompleted =
     project.isCompleted ||
     project.completionStatus === 'Completed' ||
-    project.status === 'Completed' ||
-    project.physicalProgress >= 99.5;
+    project.status === 'Completed';
 
   return (
     <Modal
@@ -63,28 +57,8 @@ export default function ProjectDetailModal({
           )}
         </div>
 
-        {/* Progress Bar */}
-        <div className="p-4 bg-white border border-slate-200 rounded-lg space-y-2">
-          <div className="flex justify-between items-center text-xs">
-            <span className="font-semibold text-slate-700">Physical Progress Recorded</span>
-            <span className="text-sm font-bold text-blue-700">
-              {project.physicalProgress || project.progressPercent || 0}%
-            </span>
-          </div>
-          <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-            <div
-              className={`h-full rounded-full transition-all duration-500 ${
-                isCompleted ? 'bg-emerald-500' : 'bg-blue-600'
-              }`}
-              style={{
-                width: `${Math.min(100, project.physicalProgress || project.progressPercent || 0)}%`,
-              }}
-            />
-          </div>
-        </div>
-
         {/* Key Metrics Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 text-xs">
+        <div className="grid grid-cols-2 gap-3.5 text-xs">
           <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
             <span className="text-slate-500 flex items-center gap-1">
               <Building2 className="w-3.5 h-3.5 text-slate-400" />
@@ -92,16 +66,6 @@ export default function ProjectDetailModal({
             </span>
             <p className="font-semibold text-slate-900 truncate">
               {project.sector || project.category || 'Infrastructure'}
-            </p>
-          </div>
-
-          <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
-            <span className="text-slate-500 flex items-center gap-1">
-              <IndianRupee className="w-3.5 h-3.5 text-slate-400" />
-              Sanctioned Cost
-            </span>
-            <p className="font-semibold text-slate-900">
-              {project.budget || (project.originalCostCr ? `₹${project.originalCostCr} Cr` : 'Tender Allocated')}
             </p>
           </div>
 
@@ -125,7 +89,7 @@ export default function ProjectDetailModal({
             </p>
           </div>
 
-          <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-1 sm:col-span-2">
+          <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
             <span className="text-slate-500 flex items-center gap-1">
               <Calendar className="w-3.5 h-3.5 text-slate-400" />
               Target / Expected Handover Date
@@ -186,4 +150,3 @@ export default function ProjectDetailModal({
     </Modal>
   );
 }
-

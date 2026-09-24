@@ -444,25 +444,8 @@ export default function CivilianDashboard() {
                           <span>{project.distanceKm} km from you</span>
                         </div>
 
-                        {/* Progress Bar */}
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between text-xs">
-                            <span className="text-slate-500">Physical Progress:</span>
-                            <strong className="text-slate-900">{project.physicalProgress}%</strong>
-                          </div>
-                          <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                            <div
-                              className="h-full bg-amber-500 rounded-full"
-                              style={{ width: `${Math.min(100, project.physicalProgress)}%` }}
-                            />
-                          </div>
-                        </div>
-
                         <div className="text-xs text-slate-600 space-y-1 pt-1 border-t border-slate-100">
-                          <div className="flex justify-between">
-                            <span className="text-slate-400">Budget:</span>
-                            <span className="font-semibold text-slate-800">{project.budget}</span>
-                          </div>
+                          
                           <div className="flex justify-between">
                             <span className="text-slate-400">Target Handover:</span>
                             <span className="font-medium text-slate-800">{project.targetDate}</span>
@@ -570,10 +553,7 @@ export default function CivilianDashboard() {
                         </div>
 
                         <div className="text-xs text-slate-600 space-y-1 pt-2 border-t border-slate-100">
-                          <div className="flex justify-between">
-                            <span className="text-slate-400">Total Sanctioned:</span>
-                            <span className="font-semibold text-slate-800">{project.budget}</span>
-                          </div>
+                          
                           <div className="flex justify-between">
                             <span className="text-slate-400">Handover Date:</span>
                             <span className="font-medium text-slate-800">{project.targetDate}</span>

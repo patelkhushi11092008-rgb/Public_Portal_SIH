@@ -220,25 +220,8 @@ export default function ProjectsPage() {
                         </div>
                       )}
 
-                      {/* Progress Bar */}
-                      <div className="space-y-1">
-                        <div className="flex justify-between text-xs">
-                          <span className="text-slate-500">Physical Progress:</span>
-                          <strong className="text-slate-900">{project.physicalProgress}%</strong>
-                        </div>
-                        <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                          <div
-                            className={`h-full rounded-full ${isCompleted ? 'bg-emerald-500' : 'bg-amber-500'}`}
-                            style={{ width: `${Math.min(100, project.physicalProgress)}%` }}
-                          />
-                        </div>
-                      </div>
-
                       <div className="text-xs text-slate-600 space-y-1 pt-1 border-t border-slate-100">
-                        <div className="flex justify-between">
-                          <span className="text-slate-400">Budget:</span>
-                          <span className="font-semibold text-slate-800">{project.budget}</span>
-                        </div>
+                        
                         <div className="flex justify-between">
                           <span className="text-slate-400">Target Date:</span>
                           <span className="font-medium text-slate-800">{project.targetDate}</span>

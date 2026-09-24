@@ -54,8 +54,7 @@ export default function ProjectDetailPage() {
           district: user?.district || 'Ahmedabad',
           location: `${user?.district || 'Ahmedabad'} Region`,
           status: 'Under Progress',
-          physicalProgress: 65,
-          budget: '₹85.00 Cr',
+          
           startDate: '10-Jan-2023',
           expectedCompletion: '30-Oct-2026',
         };
@@ -91,7 +90,7 @@ export default function ProjectDetailPage() {
     project.isCompleted ||
     project.completionStatus === 'Completed' ||
     project.status === 'Completed' ||
-    project.physicalProgress >= 99.5;
+    false;
 
   return (
     <div className="pb-20">
@@ -150,25 +149,8 @@ export default function ProjectDetailPage() {
                   </div>
                 )}
 
-                {/* Progress Bar */}
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-slate-600 font-semibold">Physical Progress</span>
-                    <strong className="text-blue-700 font-bold">{project.physicalProgress || 0}%</strong>
-                  </div>
-                  <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                    <div
-                      className={`h-full rounded-full ${isCompleted ? 'bg-emerald-500' : 'bg-amber-500'}`}
-                      style={{ width: `${Math.min(100, project.physicalProgress || 0)}%` }}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-3 border-t border-slate-100 text-xs">
-                  <div>
-                    <span className="text-slate-400 block">Sanctioned Cost</span>
-                    <strong className="text-slate-900 text-sm">{project.budget || `₹${project.originalCostCr} Cr`}</strong>
-                  </div>
+                <div className="grid grid-cols-2 gap-4 pt-3 border-t border-slate-100 text-xs">
+                  
                   <div>
                     <span className="text-slate-400 block">Start Date</span>
                     <strong className="text-slate-900 text-sm">{project.startDate || '01-Jan-2022'}</strong>

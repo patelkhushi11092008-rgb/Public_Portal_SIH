@@ -406,7 +406,7 @@ export default function HomePage() {
 
             <Textarea
               label="Citizen Ground Reality Observation Notes"
-              placeholder="Describe physical progress, machinery present, labor count, obstruction..."
+              placeholder="Describe ground reality, machinery present, labor count, obstruction..."
               value={sampleTextarea}
               onChange={(e) => setSampleTextarea(e.target.value)}
               helperText="Ground observations are reviewed by AI and municipal auditors."
@@ -521,10 +521,7 @@ export default function HomePage() {
                   </CardTitle>
 
                   <div className="space-y-1 text-xs text-slate-600">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Sanctioned Budget:</span>
-                      <strong className="text-slate-800 font-semibold">{project.budget}</strong>
-                    </div>
+                    
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500">Target Handover:</span>
                       <span className="font-medium text-slate-800">{project.targetDate}</span>
@@ -532,26 +529,6 @@ export default function HomePage() {
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500">Location:</span>
                       <span className="font-medium text-slate-800">{project.ward}</span>
-                    </div>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="pt-2">
-                    <div className="flex justify-between text-xs font-semibold mb-1">
-                      <span className="text-slate-600">Official Milestone Progress</span>
-                      <span className="text-blue-700">{project.progressPercent}%</span>
-                    </div>
-                    <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                      <div
-                        className={`h-full rounded-full ${
-                          project.status === 'WORK_STOPPED'
-                            ? 'bg-rose-500'
-                            : project.status === 'DELAYED'
-                            ? 'bg-amber-500'
-                            : 'bg-blue-600'
-                        }`}
-                        style={{ width: `${project.progressPercent}%` }}
-                      />
                     </div>
                   </div>
 

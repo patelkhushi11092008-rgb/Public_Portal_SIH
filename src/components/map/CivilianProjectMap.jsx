@@ -143,7 +143,7 @@ export default function CivilianProjectMap({
         {/* Nearby Projects Markers */}
         {projects.map((p) => {
           if (!p.latitude || !p.longitude) return null;
-          const isCompleted = p.isCompleted || p.completionStatus === 'Completed' || p.status === 'Completed' || p.physicalProgress >= 99.5;
+          const isCompleted = p.isCompleted || p.completionStatus === 'Completed' || p.status === 'Completed';
           const pos = [p.latitude, p.longitude];
 
           return (
@@ -178,18 +178,6 @@ export default function CivilianProjectMap({
                       <span className="text-slate-500">Distance:</span>
                       <strong className="text-blue-700">{p.distanceKm || p.distance || 0} km</strong>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">Progress:</span>
-                      <strong className="text-slate-900">{p.physicalProgress || p.progressPercent || 0}%</strong>
-                    </div>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                    <div
-                      className={`h-full rounded-full ${isCompleted ? 'bg-emerald-500' : 'bg-amber-500'}`}
-                      style={{ width: `${Math.min(100, p.physicalProgress || p.progressPercent || 0)}%` }}
-                    />
                   </div>
 
                   {/* Action Buttons */}
@@ -231,4 +219,3 @@ export default function CivilianProjectMap({
     </div>
   );
 }
-

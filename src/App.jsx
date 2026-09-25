@@ -34,8 +34,13 @@ export default function App() {
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/project/:id" element={<ProjectDetailPage />} />
+              <Route path="/projects/:id" element={<ProjectDetailPage />} />
               <Route path="/map" element={<MapPage />} />
               <Route path="/report" element={<ReportPage />} />
+              <Route path="/feedback" element={<ReportPage />} />
+              <Route path="/report-issue" element={<ReportPage />} />
+              <Route path="/my-feedback" element={<CivilianDashboard />} />
+              <Route path="/my-issues" element={<CivilianDashboard />} />
               <Route path="/transparency" element={<TransparencyPage />} />
               <Route path="/how-it-works" element={<HowItWorksPage />} />
               <Route path="/about" element={<AboutPage />} />

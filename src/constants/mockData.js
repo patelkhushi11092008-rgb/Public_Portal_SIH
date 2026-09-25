@@ -15,6 +15,8 @@ export const MOCK_PROJECTS = [
     verifiedCount: 19,
     disputedCount: 2,
     latestUpdate: 'Pillar erection completed; girder casting delayed due to utility diversion.',
+    coordinates: { lat: 28.6280, lng: 77.3670 },
+    mapColor: '#D97706',
   },
   {
     id: 'JN-2025-DR-108',
@@ -32,6 +34,8 @@ export const MOCK_PROJECTS = [
     verifiedCount: 39,
     disputedCount: 0,
     latestUpdate: 'Pre-cast culverts laid for 3.4 km stretch. Desilting in progress.',
+    coordinates: { lat: 28.5912, lng: 77.3195 },
+    mapColor: '#059669',
   },
   {
     id: 'JN-2025-HL-019',
@@ -49,6 +53,8 @@ export const MOCK_PROJECTS = [
     verifiedCount: 34,
     disputedCount: 7,
     latestUpdate: 'Structural work halted since Jan 12. Contractor dispute resolution underway.',
+    coordinates: { lat: 28.5721, lng: 77.3482 },
+    mapColor: '#DC2626',
   },
   {
     id: 'JN-2025-ED-004',
@@ -66,6 +72,8 @@ export const MOCK_PROJECTS = [
     verifiedCount: 65,
     disputedCount: 0,
     latestUpdate: 'Building handover completed. Commissioning inspection done.',
+    coordinates: { lat: 28.6448, lng: 77.2167 },
+    mapColor: '#1D4ED8',
   },
   {
     id: 'JN-2025-WT-087',
@@ -83,6 +91,8 @@ export const MOCK_PROJECTS = [
     verifiedCount: 1,
     disputedCount: 0,
     latestUpdate: 'Tender awarded. Soil testing and demarcation pending on-site.',
+    coordinates: { lat: 28.6742, lng: 77.4538 },
+    mapColor: '#64748B',
   },
 ];
 

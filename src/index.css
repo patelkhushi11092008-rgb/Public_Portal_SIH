@@ -35,3 +35,33 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* ── Leaflet map fixes ──────────────────────────────────────────────────── */
+/* Ensure the map container always occupies its parent height */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Prevent Tailwind's border-box reset from breaking Leaflet tile layout */
+.leaflet-container img.leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+  width: 256px !important;
+  height: 256px !important;
+}
+
+/* JanNirikshan popup styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15) !important;
+  padding: 0 !important;
+}
+.leaflet-popup-content {
+  margin: 14px 16px !important;
+  width: auto !important;
+}
+.leaflet-popup-tip-container {
+  margin-top: -1px;
+}

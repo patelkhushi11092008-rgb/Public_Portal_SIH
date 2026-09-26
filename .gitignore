@@ -224,5 +224,4 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 .vercel
-.env.local
-.env.*.local
+.env*
